@@ -1,0 +1,47 @@
+{
+  "snapshot_version": "1.0",
+  "exported_at": "2026-05-17T14:30:00Z",
+  "llm_source": "Claude",
+  "goal": "Build a personal finance tracker in Python with multi-currency support, category filtering, and a CLI interface.",
+  "context": "User is a developer comfortable with Python. Using Python 3.11, no frameworks, keeping it simple with a flat-file JSON database. Decided against SQLite to keep it beginner-friendly. Wants to eventually add a web UI but not yet.",
+  "progress": [
+    "Designed Transaction dataclass with date, amount, category, currency fields",
+    "Implemented add_transaction() with input validation",
+    "Added filter_by_month() and get_totals() functions",
+    "Built simple CLI menu (add, view monthly summary, filter by category, exit)",
+    "Fixed off-by-one bug in December month filtering"
+  ],
+  "artifacts": [
+    {
+      "name": "finance_tracker.py",
+      "language": "Python",
+      "description": "Main module — Transaction class, CRUD functions, currency converter, CLI menu",
+      "status": "complete"
+    },
+    {
+      "name": "data.json",
+      "language": "JSON",
+      "description": "Flat-file storage for all transactions",
+      "status": "complete"
+    }
+  ],
+  "open_issues": [
+    "Currency conversion uses hardcoded rates — needs live API or at least a config file",
+    "No data persistence between runs yet — data.json loading not wired up on startup",
+    "No error handling if data.json is corrupted"
+  ],
+  "next_steps": [
+    "Wire up data.json loading on startup so data persists between runs",
+    "Move hardcoded currency rates to a config.json file",
+    "Add basic error handling for file read failures"
+  ],
+  "key_facts": {
+    "language": "Python 3.11",
+    "storage": "Flat JSON file (data.json)",
+    "currencies_supported": "USD, BDT",
+    "no_external_libraries": true,
+    "cli_style": "while-loop with input() prompts"
+  },
+  "full_summary": "The user is building a CLI-based personal finance tracker in Python. We designed a Transaction dataclass and implemented core CRUD operations, monthly filtering, and totals. A simple CLI menu was added. We also fixed a December month-filtering bug (was using <= 12 range instead of direct month comparison). The main remaining gaps are: data doesn't persist between runs, currency rates are hardcoded, and there's no error handling for file corruption.",
+  "resume_prompt": "Here is my context snapshot. Resume from where we left off: I'm building a Python CLI finance tracker. Core features (Transaction class, add/filter/totals functions, CLI menu) are done. Fixed the December month bug. Next: wire up data.json to load on startup for persistence, move currency rates to config.json, add basic file error handling. Stack: Python 3.11, no frameworks, flat JSON storage, USD + BDT currencies."
+}
